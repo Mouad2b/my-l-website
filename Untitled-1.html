@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Website</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #9dd1dd;
+            transition: background-color 0.5s;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Styling for the moving button */
+        #noButton {
+            position: absolute;
+        }
+
+        #roseImage {
+            display: none;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+   
+<!-- Page 1 -->
+<div id="page1" class="center">
+    <style>
+        .stylish-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 48px;
+            color: #60bc6b;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+    </style>
+     <p class="stylish-text">Hi my love</p>
+    <button onclick="goToPage2()">Next</button>
+</div>
+
+<!-- Page 2 -->
+<div id="page2" class="center" style="display:none;">
+    <h1>I have a gift for you, do you want it?</h1>
+    <button onclick="showGift()">Yes</button>
+    <button id="noButton" onmouseover="moveButton()">No</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="center" style="display:none;">
+    <h1>Here's your gift!</h1>
+    <img id="roseImage" src="https://example.com/roses.jpg" alt="Roses" />
+</div>
+
+<script>
+    function goToPage2() {
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('page2').style.display = 'block';
+    }
+
+    function moveButton() {
+        const noButton = document.getElementById('noButton');
+        const randomX = Math.floor(Math.random() * (window.innerWidth - noButton.clientWidth));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - noButton.clientHeight));
+        noButton.style.left = randomX + 'px';
+        noButton.style.top = randomY + 'px';
+    }
+
+    function showGift() {
+        document.getElementById('page2').style.display = 'none';
+        document.getElementById('page3').style.display = 'block';
+        document.getElementById('roseImage').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
